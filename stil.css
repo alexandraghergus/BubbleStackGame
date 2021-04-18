@@ -1,0 +1,53 @@
+* {
+  color: white;
+  box-sizing: border-box;
+  cursor: move; 
+  font-family: 'Impacts', fantasy;
+  font-style: oblique;
+  font-weight: 400 ;
+  font-variant: small-caps;
+}
+body {
+  margin: 0;  
+  width: 100%;
+}
+
+#results, #instructions {
+  display: none;
+  
+}
+#results, #instructions {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    font-size:larger;
+    height: 100%;
+    max-width: 300px;
+    background-color: rgba(48, 22, 22, 0.75);
+    display: flex;
+    padding :50px;
+
+ }
+h1{
+    color: black;
+    font-size: 30px;
+}
+h2{
+  color: rgb(37, 37, 34);
+  font-size: 30px;
+}
+h3{
+  font-size: 60px;
+}
+  
+#results {
+  display: none;
+}
+#score {
+  position: absolute;
+  color: rgb(0, 0, 0);
+  font-size: 3em;
+  right: 30px;
+  
+}
+
