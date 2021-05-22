@@ -5,11 +5,12 @@ const objectSize = 2;
 
 let stack = [];
 const boxHeight = 1;
-let overhangs, world, lastTime, pilotAutomat, final, precizie;
+let overhangs, world, lastTime, pilotAutomat, final, precizie, gamePaused=false;
 
 const scorEl = document.getElementById("score");
 const instructiuneEL = document.getElementById("instructions");
 const rezultatEl = document.getElementById("results");
+const pauseEl = document.getElementById("pauza");
 
 function addLayer(x, z, width, depth, direction) {
   const y = boxHeight * stack.length;
@@ -92,6 +93,16 @@ function start() {
   }
 }
 
+function pause() {
+  if(!final&&!pilotAutomat){
+  gamePaused = ! gamePaused;
+  if(gamePaused)
+     pauseEl.style.display = "flex";
+  else
+    pauseEl.style.display = "none"; 
+  }
+}
+
 function redim(topLayer, overlap, size, delta) {
   if (!pilotAutomat) {
     const listener = new THREE.AudioListener();
@@ -134,6 +145,7 @@ function redim(topLayer, overlap, size, delta) {
 
 window.addEventListener("touchstart", eventHandler);
 window.addEventListener("keydown", function (event) {
+  
   if (event.key == " ") {
     event.preventDefault();
     eventHandler();
@@ -144,11 +156,18 @@ window.addEventListener("keydown", function (event) {
     start();
     return;
   }
+  if (event.key == "P" || event.key == "p") {
+    event.preventDefault();
+    pause();
+    return;
+  }
 });
+
 window.addEventListener("mousedown", eventHandler);
 
 function eventHandler() {
-  if (!pilotAutomat) adaugareNivel();
+  if (!pilotAutomat && !gamePaused) 
+    adaugareNivel();
   else start();
 }
 
@@ -247,7 +266,7 @@ function over() {
 }
 
 function animation(time) {
-  if (lastTime) {
+  if (lastTime && !gamePaused) {
     const timePassed = time - lastTime;
     const speed = 0.008;
 
@@ -304,6 +323,7 @@ window.addEventListener("resize", () => {
 
 
 function init() {
+ 
   precizie = (Math.random() - 0.5) * 30;
   pilotAutomat = true;
   final = false;
@@ -356,6 +376,7 @@ function init() {
   renderer.setAnimationLoop(animation);
   document.body.appendChild(renderer.domElement);
 }
+
 
 
 init();

@@ -12,11 +12,11 @@ body {
   width: 100%;
 }
 
-#results, #instructions {
+#results, #instructions,#pauza {
   display: none;
   
 }
-#results, #instructions {
+#results, #instructions,#pauza {
     position: absolute;
     justify-content: center;
     align-items: center;
@@ -29,18 +29,22 @@ body {
 
  }
 h1{
-    color: black;
+    color: rgb(0, 0, 0);
     font-size: 30px;
 }
 h2{
-  color: rgb(37, 37, 34);
+  color: rgb(39, 39, 2);
   font-size: 30px;
 }
 h3{
-  font-size: 60px;
+  font-size: 30px;
+  color: rgb(21, 2, 56);
 }
   
 #results {
+  display: none;
+}
+#pauza{
   display: none;
 }
 #score {
